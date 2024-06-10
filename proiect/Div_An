@@ -1,0 +1,23 @@
+`ifndef DIV_AN
+`define DIV_AN
+
+module Div_An
+(     
+  input osc_clk,
+  input reset,
+  output [19:0] counter
+);
+  
+  reg [19:0] counter_up = 0;
+  
+  always @(posedge osc_clk or posedge reset)
+    begin
+      if(counter_up < 833333.335)
+        counter_up <= counter_up + 1;
+  else if (reset)
+      counter_up <= 0;
+    end
+  assign counter = counter_up;
+endmodule
+
+`endif

@@ -1,0 +1,21 @@
+`ifndef NUM_ZM
+`define NUM_ZM
+
+module Num_ZM
+(
+  input clk,
+  input reset,
+  input enable,
+  output reg [3:0] state
+);
+  
+   always @(posedge clk)
+      begin
+        if(reset)
+          state <= 0;
+        else if (enable)
+          state <= state + 1;
+      end
+endmodule
+
+`endif

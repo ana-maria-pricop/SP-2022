@@ -1,0 +1,23 @@
+`ifndef NUM_ZS
+`define NUM_ZS
+
+module Num_ZS
+(
+  input reset,
+  input clk,
+  input enable,
+  output clk_out,
+  output reg [3:0] state
+);
+  
+  always @(posedge clk)
+      begin
+        if(reset)
+          state <= 0;
+        else if (enable)
+          state <= state + 1;
+      end
+  assign clk_out = (state == 4'b101) ? 1'b1 : 1'b0;
+endmodule
+
+`endif

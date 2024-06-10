@@ -1,0 +1,22 @@
+`ifndef NUM_US
+`define NUM_US
+
+module Num_US
+(
+  input reset,
+  input clk,
+  output clk_out,
+  output reg [3:0] state
+);
+  
+  always @(posedge clk)
+    begin
+      if(reset)
+        state <= 0;
+      else
+        state <= state + 1;
+    end
+   assign clk_out = (state == 4'b1001) ? 1'b1 : 1'b0;
+endmodule
+
+`endif
